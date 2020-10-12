@@ -13,5 +13,5 @@ An tutorial of using pybind11 module built with Cmake-based build system. This i
 
 #### On Windows 
 * Visual Studio 2015 (Compiler and Runtime requirements)
->>> Unlike regular C extension modules, it's perfectly fine to compile a pybind11 module with a VS version newer than the target Python's VS version
+> Unlike regular C extension modules, it's perfectly fine to compile a pybind11 module with a VS version newer than the target Python's VS version
 * CMake >=3.1
