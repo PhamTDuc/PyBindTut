@@ -1,3 +1,6 @@
+https://www.benjack.io/2017/06/12/python-cpp-tests.html  
+https://blog.lindx.net/2019/08/14/pybind11/  
+
 ## PyBind11 Tutorial 
 
 An tutorial of using pybind11 module built with Cmake-based build system. This is useful for C++ codebases that have existing CMake project structure 
