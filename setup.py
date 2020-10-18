@@ -74,7 +74,7 @@ class CMakeBuild(build_ext):
 
 
 setup(
-    name='sample',
+    name='functions',
     version='0.0.1',
     author='Pham Duc',
     author_email='phamduc0701@gmail.com',
