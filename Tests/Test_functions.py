@@ -17,3 +17,9 @@ if __name__ == "__main__":
 
     # Python args as arguments
     func.testArgs(1, 2, 3, 45, 6, 7, 9)
+
+    # Python kwargs only
+    func.kw_only_default(x=4, y=5)
+
+    # Python args kwargs mixed
+    func.kw_mixed(2, y=4, z=7)

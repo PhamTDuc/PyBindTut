@@ -46,6 +46,12 @@ void testArgs(py::args args)
 	std::cout << "Sum is " << sum<<'\n'; 
 }
 
+void kw_only_default(int x, int y, int z)
+{
+	py::print("Sum of all x, y, z ", x + y + z);
+}
+
+
 PYBIND11_MODULE(functions, m)
 {
 	m.doc() = "This function module to test everything about function in pybind11";
@@ -61,4 +67,8 @@ PYBIND11_MODULE(functions, m)
 
 	// Python Args
 	m.def("testArgs", &testArgs);
+
+	//Python Kwargs Only
+	m.def("kw_only_default", &kw_only_default, py::kw_only(), py::arg("x") = 0, py::arg("y") = 0, py::arg("z") = 0);
+	m.def("kw_mixed", &kw_only_default, py::arg() = 0, py::kw_only(), py::arg("y") = 0, py::arg("z") = 0);
 }
