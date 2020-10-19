@@ -23,3 +23,20 @@ if __name__ == "__main__":
 
     # Python args kwargs mixed
     func.kw_mixed(2, y=4, z=7)
+
+    # Revisit default argument
+    func.storeObject(func.Object())
+    # help(func.storeObject)
+    # help(func.storeObjectArgv)
+
+    # On-converting arguments
+    print(func.float_only(5.53))
+    # print(func.float_only(5)) # Raise TypeError
+    print(func.float_prefered(5.53))
+    print(func.float_prefered(5))  # Implemented normal
+
+    # Allow/Prohibiting None arguments
+    func.has_print(None)
+
+    obj = func.Object()
+    func.has_print(obj)

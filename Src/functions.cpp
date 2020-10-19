@@ -13,7 +13,7 @@ public:
 	Object(const Object&){py::print("Copy Constructor");}
 	Object(Object&&){py::print("Move Constructor");}
 	virtual ~Object(){py::print("Delete Object");}
-	void print(){py::print("Hello from pybind");}
+	void print() const {py::print("Hello from pybind");}
 };
 
 
@@ -52,6 +52,11 @@ void kw_only_default(int x, int y, int z)
 }
 
 
+void storeObject(const Object &object)
+{
+	object.print();
+}
+
 PYBIND11_MODULE(functions, m)
 {
 	m.doc() = "This function module to test everything about function in pybind11";
@@ -71,4 +76,15 @@ PYBIND11_MODULE(functions, m)
 	//Python Kwargs Only
 	m.def("kw_only_default", &kw_only_default, py::kw_only(), py::arg("x") = 0, py::arg("y") = 0, py::arg("z") = 0);
 	m.def("kw_mixed", &kw_only_default, py::arg() = 0, py::kw_only(), py::arg("y") = 0, py::arg("z") = 0);
+
+	// Revisit default argument
+	m.def("storeObject", &storeObject ,py::arg("object") = Object());
+	m.def("storeObjectArgv", &storeObject ,py::arg_v("object", Object(), "Instance of object"));
+
+	// On-converting arguments
+	m.def("float_only", [](double f) {return 0.5 * f;}, py::arg("f").noconvert());
+	m.def("float_prefered",[](double f){return 0.5 * f;}, py::arg("f"));
+
+	// Allow/Prohibiting None arguments
+	m.def("has_print",[](const Object *object){if(object) object->print(); else py::print("No object instance found");}, py::arg("object").none(false));
 }
