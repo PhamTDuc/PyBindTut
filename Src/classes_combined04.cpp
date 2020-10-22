@@ -31,6 +31,7 @@ public:
 
 class PyDog: public Dog
 {
+public:
 	using Dog::Dog;
 	std::string go(int n_times) const override {PYBIND11_OVERLOAD(std::string, Dog, go, n_times);}
 	std::string name() const override {PYBIND11_OVERLOAD(std::string, Dog, name,);}
