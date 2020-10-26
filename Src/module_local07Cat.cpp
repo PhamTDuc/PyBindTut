@@ -16,7 +16,7 @@ namespace pets
 PYBIND11_MODULE(cat, m)
 {
 	m.doc() = "Module-local Cat class bindings";
-	py::class_<pets::Pet>(m, "Pet")
+	py::class_<pets::Pet>(m, "Pet", py::module_local())
 		// .def(py::init<std::string&>())
 		.def("getName", &pets::Pet::getName);
 
